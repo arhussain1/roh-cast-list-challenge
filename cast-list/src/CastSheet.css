@@ -25,6 +25,12 @@
 	flex-direction: column;
 }
 
+.castSheet__desc-title {
+	font-size: 30px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
 .castSheet__creatives {
 	display: flex;
 	gap: 10px;

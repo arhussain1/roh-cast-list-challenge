@@ -41,7 +41,7 @@ const CastSheet = ({ data }) => {
 			<div className="castSheet__title">{title}</div>
 			<div className="castSheet__date">Date: {formattedDate}</div>
 			<div className="castSheet__desc">
-				Short Description
+				<div className="castSheet__desc-title">Short Description</div>
 				<div dangerouslySetInnerHTML={{ __html: description }} />
 			</div>
 			<DisplayPeople title={"Creatives"} people={creatives} />
