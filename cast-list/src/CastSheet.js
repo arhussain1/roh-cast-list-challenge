@@ -25,13 +25,15 @@ const getCurrentCast = (includedData, date) => {
 };
 
 const CastSheet = ({ data }) => {
-	const rawDate = dayjs("2023-03-10T19:00:00+00:00");
-	const formattedDate = rawDate.format("DD/MM/YYYY");
+	const rawDate = "2023-03-10T19:00:00+00:00";
+	const formattedDate = dayjs(rawDate).format("DD/MM/YYYY");
 	const title = data.data.attributes.title;
 	const description = data.data.attributes.shortDescription;
 	const creatives = data.included.filter(
 		(object) => object.type === "creatives"
 	);
+
+	const currentCast = getCurrentCast(data.included, rawDate);
 
 	return (
 		<div className="castSheet">
@@ -49,6 +51,21 @@ const CastSheet = ({ data }) => {
 						const name = creative.attributes.name;
 						return (
 							<div className="castSheet__creatives" key={creative.id}>
+								<div className="castSheet__role--bold">{role}:</div>
+								<div>{name}</div>
+							</div>
+						);
+					})}
+				</div>
+			</div>
+			<div>
+				Cast
+				<div>
+					{currentCast.map((castMembers) => {
+						const role = castMembers.attributes.role;
+						const name = castMembers.attributes.name;
+						return (
+							<div className="castSheet__creatives" key={castMembers.id}>
 								<div className="castSheet__role--bold">{role}:</div>
 								<div>{name}</div>
 							</div>
