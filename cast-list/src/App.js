@@ -17,7 +17,7 @@ const App = ({}) => {
 	const date = "10/03/2023";
 	const description = data?.data.attributes.shortDescription;
 
-	const creatives = data.included.filter(
+	const creatives = data?.included.filter(
 		(object) => object.type === "creatives"
 	);
 
@@ -32,11 +32,11 @@ const App = ({}) => {
 			<div>
 				Creatives
 				<div>
-					{creatives.map((creative) => {
+					{creatives?.map((creative) => {
 						const role = creative.attributes.role;
 						const name = creative.attributes.name;
 						return (
-							<div className="castSheet__creatives">
+							<div className="castSheet__creatives" key={creative.id}>
 								<div className="castSheet__role--bold">{role}:</div>
 								<div>{name}</div>
 							</div>
