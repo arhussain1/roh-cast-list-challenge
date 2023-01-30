@@ -13,6 +13,8 @@ const App = ({}) => {
 			.catch((error) => console.log("error", error));
 	}
 
+	const title = data?.data.attributes.title;
+
 	return (
 		<div className="castSheet">
 			<div className="castSheet__title">{title}</div>
