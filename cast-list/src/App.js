@@ -14,10 +14,17 @@ const App = ({}) => {
 	}
 
 	const title = data?.data.attributes.title;
+	const date = "10/03/2023";
+	const description = data?.data.attributes.shortDescription;
 
 	return (
 		<div className="castSheet">
 			<div className="castSheet__title">{title}</div>
+			<div className="castSheet__date">Date: {date}</div>
+			<div className="castSheet__desc">
+				Short Description
+				<div dangerouslySetInnerHTML={{ __html: description }} />
+			</div>
 		</div>
 	);
 };
