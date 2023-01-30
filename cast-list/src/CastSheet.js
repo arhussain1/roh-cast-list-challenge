@@ -1,5 +1,6 @@
 import "./CastSheet.css";
 import dayjs from "dayjs";
+import DisplayPeople from "./components/DisplayMembers/DisplayPeople";
 
 const getCurrentCast = (includedData, date) => {
 	// this function allows us to find the correct cast for a performance
@@ -43,36 +44,8 @@ const CastSheet = ({ data }) => {
 				Short Description
 				<div dangerouslySetInnerHTML={{ __html: description }} />
 			</div>
-			<div>
-				Creatives
-				<div>
-					{creatives.map((creative) => {
-						const role = creative.attributes.role;
-						const name = creative.attributes.name;
-						return (
-							<div className="castSheet__creatives" key={creative.id}>
-								<div className="castSheet__role--bold">{role}:</div>
-								<div>{name}</div>
-							</div>
-						);
-					})}
-				</div>
-			</div>
-			<div>
-				Cast
-				<div>
-					{currentCast.map((castMembers) => {
-						const role = castMembers.attributes.role;
-						const name = castMembers.attributes.name;
-						return (
-							<div className="castSheet__creatives" key={castMembers.id}>
-								<div className="castSheet__role--bold">{role}:</div>
-								<div>{name}</div>
-							</div>
-						);
-					})}
-				</div>
-			</div>
+			<DisplayPeople title={"Creatives"} people={creatives} />
+			<DisplayPeople title={"Cast"} people={currentCast} />
 		</div>
 	);
 };

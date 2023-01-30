@@ -1,0 +1,14 @@
+.displayPeople__title {
+	font-size: 30px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.displayPeople__person {
+	display: flex;
+	gap: 10px;
+}
+
+.displayPeople__role--bold {
+	font-weight: 1000;
+}
