@@ -1,6 +1,29 @@
 import "./CastSheet.css";
 import dayjs from "dayjs";
 
+const getCurrentCast = (includedData, date) => {
+	// this function allows us to find the correct cast for a performance
+	// for a given date and time
+	const currentDateActivities = includedData.filter(
+		(object) => object.type === "activities" && object.attributes.date === date
+	);
+
+	const currentCastRoleIds =
+		currentDateActivities[0].relationships.cast.data.map(
+			(castRole) => castRole.id
+		);
+
+	const allCastMembers = includedData.filter(
+		(object) => object.type === "castRoles"
+	);
+
+	const currentCast = allCastMembers.filter((castMember) =>
+		currentCastRoleIds.includes(castMember.id)
+	);
+
+	return currentCast;
+};
+
 const CastSheet = ({ data }) => {
 	const rawDate = dayjs("2023-03-10T19:00:00+00:00");
 	const formattedDate = rawDate.format("DD/MM/YYYY");
