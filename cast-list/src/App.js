@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import dayjs from "dayjs";
 
 const App = ({}) => {
 	const [data, setData] = useState();
@@ -13,10 +14,10 @@ const App = ({}) => {
 			.catch((error) => console.log("error", error));
 	}
 
+	const rawDate = dayjs("2023-03-10T19:00:00+00:00");
+	const formattedDate = rawDate.format("DD/MM/YYYY");
 	const title = data?.data.attributes.title;
-	const date = "10/03/2023";
 	const description = data?.data.attributes.shortDescription;
-
 	const creatives = data?.included.filter(
 		(object) => object.type === "creatives"
 	);
@@ -24,7 +25,7 @@ const App = ({}) => {
 	return (
 		<div className="castSheet">
 			<div className="castSheet__title">{title}</div>
-			<div className="castSheet__date">Date: {date}</div>
+			<div className="castSheet__date">Date: {formattedDate}</div>
 			<div className="castSheet__desc">
 				Short Description
 				<div dangerouslySetInnerHTML={{ __html: description }} />
