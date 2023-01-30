@@ -29,15 +29,16 @@ const App = ({}) => {
 				Short Description
 				<div dangerouslySetInnerHTML={{ __html: description }} />
 			</div>
-			<div className="castSheet__creatives">
+			<div>
 				Creatives
 				<div>
 					{creatives.map((creative) => {
 						const role = creative.attributes.role;
 						const name = creative.attributes.name;
 						return (
-							<div>
-								{role}: {name}
+							<div className="castSheet__creatives">
+								<div className="castSheet__role--bold">{role}:</div>
+								<div>{name}</div>
 							</div>
 						);
 					})}

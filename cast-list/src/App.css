@@ -24,3 +24,12 @@
 	display: flex;
 	flex-direction: column;
 }
+
+.castSheet__creatives {
+	display: flex;
+	gap: 10px;
+}
+
+.castSheet__role--bold {
+	font-weight: 1000;
+}
