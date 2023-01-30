@@ -1,11 +1,13 @@
 import "./App.css";
 
-function App() {
+const App = ({}) => {
+	const title = "Generic title";
+
 	return (
-		<div className="App">
-			<div>Awesomeness goes here</div>
+		<div className="castSheet">
+			<div className="castSheet__title">{title}</div>
 		</div>
 	);
-}
+};
 
 export default App;
