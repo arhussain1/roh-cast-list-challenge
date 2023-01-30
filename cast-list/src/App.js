@@ -17,6 +17,10 @@ const App = ({}) => {
 	const date = "10/03/2023";
 	const description = data?.data.attributes.shortDescription;
 
+	const creatives = data.included.filter(
+		(object) => object.type === "creatives"
+	);
+
 	return (
 		<div className="castSheet">
 			<div className="castSheet__title">{title}</div>
@@ -24,6 +28,20 @@ const App = ({}) => {
 			<div className="castSheet__desc">
 				Short Description
 				<div dangerouslySetInnerHTML={{ __html: description }} />
+			</div>
+			<div className="castSheet__creatives">
+				Creatives
+				<div>
+					{creatives.map((creative) => {
+						const role = creative.attributes.role;
+						const name = creative.attributes.name;
+						return (
+							<div>
+								{role}: {name}
+							</div>
+						);
+					})}
+				</div>
 			</div>
 		</div>
 	);
