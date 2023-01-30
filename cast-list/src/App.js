@@ -1,7 +1,17 @@
+import { useState } from "react";
 import "./App.css";
 
 const App = ({}) => {
-	const title = "Generic title";
+	const [data, setData] = useState();
+
+	if (!data) {
+		fetch("/api/event-details?slug=turandot-by-andrei-serban")
+			.then((response) => response.json())
+			.then((data) => {
+				setData(data);
+			})
+			.catch((error) => console.log("error", error));
+	}
 
 	return (
 		<div className="castSheet">
